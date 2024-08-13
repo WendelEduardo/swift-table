@@ -42,7 +42,48 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let alerta = UIAlertController(
+            title: "Aviso", message: "Você selecionou a posicao \(indexPath.row)", preferredStyle: UIAlertController.Style.alert
+        )
+        
+        alerta.addAction(UIAlertAction(
+            title: "Ok", style: UIAlertAction.Style.default
+        ))
+        
+        present(alerta, animated: true)
         print("Você clicou no: \(animal[indexPath.row])")
+    }
+
+    
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let alerta = UIAlertController(
+            title: "Aviso", message: "Esse é o codigo para que clica no acessorio: \(indexPath.row)", preferredStyle: UIAlertController.Style.alert
+        )
+        
+        alerta.addAction(UIAlertAction(
+            title: "Ok", style: UIAlertAction.Style.default
+        ))
+        
+        present(alerta, animated: true)
+
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 100
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let rodape = UIImageView(image: UIImage(named: "rodape.png"))
+        return rodape
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cabecalho = UIImageView(image: UIImage(named: "cabecalho"))
+        return cabecalho
     }
 
 }
